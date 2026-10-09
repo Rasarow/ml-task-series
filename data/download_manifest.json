@@ -1,0 +1,22 @@
+{
+  "dog.jpg": {
+    "source": "https://raw.githubusercontent.com/pytorch/hub/master/images/dog.jpg",
+    "sha256": "f3f87bb8ab3c26c7ecfd3ac60421d7f32b0503d1d6c5baf8bac42ed93d86351a"
+  },
+  "cats.png": {
+    "source": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/coco_sample.png",
+    "sha256": "cf6f3c4befa148732c7453e0de5afab00f682427435fead2d88b07a9615cdac2"
+  },
+  "vtest.avi": {
+    "source": "https://raw.githubusercontent.com/opencv/opencv/4.12.0/samples/data/vtest.avi",
+    "sha256": "45cddc9490be69345cbdab64ca583be65987e864ca408038e648db99e10516cf"
+  },
+  "speech1.wav": {
+    "source": "Locally synthesized Windows English voice",
+    "sha256": "156639cd656ee786a4753412145565789af3383c9f76b73787c7e8e5cf47184d"
+  },
+  "speech2.wav": {
+    "source": "Locally synthesized Windows English voice",
+    "sha256": "958db7a94cd464d403d2727327edff7f242bdd68dc6288b6a7c789b61ad7ef16"
+  }
+}

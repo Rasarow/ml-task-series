@@ -1,0 +1,17 @@
+[
+  {
+    "id": "library",
+    "text": "The city council has approved a plan to renovate the central library. The work will begin in June and is expected to take six months. The building will receive new computers, improved lighting and a larger children's reading area. During the renovation, residents can borrow books from a temporary library in the community center. The project will cost two million dollars and will be paid for by the city's public services budget. Library staff will also organize weekly reading activities at local schools while the main building is closed.",
+    "reference": "The central library will close for a six-month renovation starting in June. A temporary library will serve residents at the community center."
+  },
+  {
+    "id": "solar",
+    "text": "A university has installed solar panels on the roofs of four campus buildings. The new system will provide about a quarter of the campus electricity during sunny months. Engineers expect it to reduce annual carbon emissions by three hundred tons. Students in the engineering department will monitor electricity production and use the measurements in their classes. The university spent one million dollars on the project. Officials estimate that savings on electricity bills will cover the installation cost within eight years. The university plans to publish monthly energy reports on its website.",
+    "reference": "The university installed solar panels on four buildings to supply campus electricity, cut carbon emissions and support engineering classes."
+  },
+  {
+    "id": "transport",
+    "text": "The town will introduce an electric bus service next month. Ten buses will connect residential neighborhoods with the train station and the hospital. The service will run every fifteen minutes during the morning and evening rush hours. Passengers can use the same tickets as on the existing bus routes. The transport department says the new vehicles will produce less noise and no exhaust emissions while driving. Drivers have completed training on the charging equipment. The town will review passenger numbers after three months before deciding whether to add more buses.",
+    "reference": "Ten electric buses will start serving the town next month, linking neighborhoods to the station and hospital with existing tickets."
+  }
+]

@@ -1,0 +1,4 @@
+[
+  {"id": "speech1", "file": "speech1.wav", "reference": "The library will open on Monday morning."},
+  {"id": "speech2", "file": "speech2.wav", "reference": "We use machine learning to recognize speech and classify images."}
+]

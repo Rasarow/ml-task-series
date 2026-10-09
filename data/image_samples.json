@@ -1,0 +1,4 @@
+[
+  {"id": "dog", "file": "dog.jpg", "acceptable_class_ids": ["n02111889"], "description": "White Samoyed from the PyTorch Hub example; label reviewed against the actual photo."},
+  {"id": "cats", "file": "cats.png", "acceptable_class_ids": ["n02123045", "n02123159", "n02124075"], "description": "Two domestic cats; accepted fine-grained ImageNet cat classes are documented here before inference."}
+]

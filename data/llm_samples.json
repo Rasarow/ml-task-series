@@ -1,0 +1,5 @@
+[
+  {"id": "arithmetic", "prompt": "What is 17 plus 25? Answer with only the integer.", "expected_exact": "42"},
+  {"id": "geography", "prompt": "What is the capital of France? Answer with only the city name.", "expected_exact": "Paris"},
+  {"id": "explanation", "prompt": "Explain the difference between image classification and object detection in two short sentences.", "expected_exact": null}
+]
