@@ -1,0 +1,1440 @@
+{
+  "timestamp_utc": "2026-10-09T00:33:26.065079+00:00",
+  "offline_mode": true,
+  "python_network_connections_blocked": true,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.14",
+  "framework_versions": {
+    "torch": "2.8.0+cpu",
+    "torchvision": "0.23.0+cpu",
+    "tensorflow": "2.20.0",
+    "transformers": "4.57.1",
+    "keras": "3.15.1"
+  },
+  "missing_framework_version_metadata": [],
+  "limitations": [
+    "Demonstration samples only, not a benchmark.",
+    "Speech is synthetic, not recordings of human speakers.",
+    "Image labels accept several cat subclasses; not official ImageNet accuracy.",
+    "Video has no ground truth boxes; mAP/precision/recall were not measured.",
+    "Counts repeat the same objects across frames; no object tracking.",
+    "RSS includes loaded libraries/models from earlier tasks and native children.",
+    "First inference can include warm-up overhead; timing is not a repeated benchmark."
+  ],
+  "aggregate_metrics": {
+    "summarization": {
+      "sample_count": 3,
+      "rouge1_f1": 0.394061,
+      "rouge2_f1": 0.123415,
+      "rougeL_f1": 0.261194
+    },
+    "speech_to_text": {
+      "sample_count": 2,
+      "normalized_wer": 0.0,
+      "normalized_cer": 0.0,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "reference_words": 17,
+      "aggregate_real_time_factor": 0.1286
+    },
+    "image_classification": {
+      "sample_count": 2,
+      "top1_demo_match_rate": 1.0,
+      "top5_demo_match_rate": 1.0
+    },
+    "video_object_detection": {
+      "decoded_frames": 90,
+      "inferred_frames": 30,
+      "inference_fps": 10.1464,
+      "processing_fps": 26.107,
+      "detection_counts_across_frames": {
+        "person": 83
+      }
+    },
+    "local_llm": {
+      "total_prompts": 3,
+      "exact_match_prompts": 2,
+      "exact_match_rate": 1.0
+    }
+  },
+  "results": {
+    "summarization": [
+      {
+        "task": "summarization",
+        "model": "google-t5/t5-small",
+        "revision": "df1b051c49625cf57a3d0d8d3863ed4d13564fe4",
+        "framework": "PyTorch + Transformers",
+        "input": "The city council has approved a plan to renovate the central library. The work will begin in June and is expected to take six months. The building will receive new computers, improved lighting and a larger children's reading area. During the renovation, residents can borrow books from a temporary library in the community center. The project will cost two million dollars and will be paid for by the city's public services budget. Library staff will also organize weekly reading activities at local schools while the main building is closed.",
+        "summary": "the central library will receive new computers, improved lighting and a larger children's reading area. the project will cost two million dollars and will be paid for by the city's public services budget.",
+        "input_tokens": 109,
+        "generated_tokens": 44,
+        "word_compression_ratio": 0.3708,
+        "load_seconds": 7.9264,
+        "inference_seconds": 1.0084,
+        "wall_seconds": 8.9465,
+        "sampled_peak_process_rss_mb": 604.22,
+        "id": "library",
+        "reference": "The central library will close for a six-month renovation starting in June. A temporary library will serve residents at the community center.",
+        "quality_metrics": {
+          "rouge1_f1": 0.275862,
+          "rouge2_f1": 0.107143,
+          "rougeL_f1": 0.241379
+        }
+      },
+      {
+        "task": "summarization",
+        "model": "google-t5/t5-small",
+        "revision": "df1b051c49625cf57a3d0d8d3863ed4d13564fe4",
+        "framework": "PyTorch + Transformers",
+        "input": "A university has installed solar panels on the roofs of four campus buildings. The new system will provide about a quarter of the campus electricity during sunny months. Engineers expect it to reduce annual carbon emissions by three hundred tons. Students in the engineering department will monitor electricity production and use the measurements in their classes. The university spent one million dollars on the project. Officials estimate that savings on electricity bills will cover the installation cost within eight years. The university plans to publish monthly energy reports on its website.",
+        "summary": "solar panels will provide about a quarter of the campus electricity during sunny months. engineers expect it to reduce annual carbon emissions by three hundred tons. university spent one million dollars on the project.",
+        "input_tokens": 105,
+        "generated_tokens": 42,
+        "word_compression_ratio": 0.3736,
+        "load_seconds": 0.0,
+        "inference_seconds": 0.9349,
+        "wall_seconds": 0.9432,
+        "sampled_peak_process_rss_mb": 634.4,
+        "id": "solar",
+        "reference": "The university installed solar panels on four buildings to supply campus electricity, cut carbon emissions and support engineering classes.",
+        "quality_metrics": {
+          "rouge1_f1": 0.415094,
+          "rouge2_f1": 0.117647,
+          "rougeL_f1": 0.226415
+        }
+      },
+      {
+        "task": "summarization",
+        "model": "google-t5/t5-small",
+        "revision": "df1b051c49625cf57a3d0d8d3863ed4d13564fe4",
+        "framework": "PyTorch + Transformers",
+        "input": "The town will introduce an electric bus service next month. Ten buses will connect residential neighborhoods with the train station and the hospital. The service will run every fifteen minutes during the morning and evening rush hours. Passengers can use the same tickets as on the existing bus routes. The transport department says the new vehicles will produce less noise and no exhaust emissions while driving. Drivers have completed training on the charging equipment. The town will review passenger numbers after three months before deciding whether to add more buses.",
+        "summary": "the town will introduce an electric bus service next month. ten buses will connect residential neighborhoods with the train station and the hospital. the service will run every fifteen minutes during the morning and evening rush hours.",
+        "input_tokens": 104,
+        "generated_tokens": 45,
+        "word_compression_ratio": 0.4111,
+        "load_seconds": 0.0,
+        "inference_seconds": 1.0225,
+        "wall_seconds": 1.0325,
+        "sampled_peak_process_rss_mb": 634.56,
+        "id": "transport",
+        "reference": "Ten electric buses will start serving the town next month, linking neighborhoods to the station and hospital with existing tickets.",
+        "quality_metrics": {
+          "rouge1_f1": 0.491228,
+          "rouge2_f1": 0.145455,
+          "rougeL_f1": 0.315789
+        }
+      }
+    ],
+    "speech_to_text": [
+      {
+        "task": "speech_to_text",
+        "model": "openai/whisper-tiny.en",
+        "revision": "87c7102498dcde7456f24cfd30239ca606ed9063",
+        "framework": "PyTorch + Transformers",
+        "input_file": "data\\downloads\\speech1.wav",
+        "transcript": "The library will open on Monday morning.",
+        "duration_seconds": 3.0089,
+        "chunks": 1,
+        "sample_rate": 16000,
+        "load_seconds": 0.5299,
+        "inference_seconds": 0.4727,
+        "real_time_factor": 0.1571,
+        "wall_seconds": 1.064,
+        "sampled_peak_process_rss_mb": 823.68,
+        "id": "speech1",
+        "reference": "The library will open on Monday morning.",
+        "quality_metrics": {
+          "normalized_wer": 0.0,
+          "normalized_cer": 0.0,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_words": 7
+        }
+      },
+      {
+        "task": "speech_to_text",
+        "model": "openai/whisper-tiny.en",
+        "revision": "87c7102498dcde7456f24cfd30239ca606ed9063",
+        "framework": "PyTorch + Transformers",
+        "input_file": "data\\downloads\\speech2.wav",
+        "transcript": "We use machine learning to recognize speech and classify images.",
+        "duration_seconds": 4.5287,
+        "chunks": 1,
+        "sample_rate": 16000,
+        "load_seconds": 0.0,
+        "inference_seconds": 0.497,
+        "real_time_factor": 0.1097,
+        "wall_seconds": 0.5129,
+        "sampled_peak_process_rss_mb": 833.33,
+        "id": "speech2",
+        "reference": "We use machine learning to recognize speech and classify images.",
+        "quality_metrics": {
+          "normalized_wer": 0.0,
+          "normalized_cer": 0.0,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_words": 10
+        }
+      }
+    ],
+    "image_classification": [
+      {
+        "task": "image_classification",
+        "model": "MobileNetV2 ImageNet alpha=1.0",
+        "framework": "TensorFlow/Keras",
+        "input_file": "data\\downloads\\dog.jpg",
+        "predictions": [
+          {
+            "class_id": "n02111889",
+            "label": "Samoyed",
+            "score": 0.640821
+          },
+          {
+            "class_id": "n02120079",
+            "label": "Arctic_fox",
+            "score": 0.102618
+          },
+          {
+            "class_id": "n02112018",
+            "label": "Pomeranian",
+            "score": 0.082461
+          },
+          {
+            "class_id": "n02123394",
+            "label": "Persian_cat",
+            "score": 0.015174
+          },
+          {
+            "class_id": "n02112350",
+            "label": "keeshond",
+            "score": 0.014354
+          }
+        ],
+        "load_seconds": 0.9184,
+        "inference_seconds": 0.2155,
+        "wall_seconds": 4.4454,
+        "sampled_peak_process_rss_mb": 1131.03,
+        "id": "dog",
+        "acceptable_class_ids": [
+          "n02111889"
+        ],
+        "top1_demo_match": true,
+        "top5_demo_match": true
+      },
+      {
+        "task": "image_classification",
+        "model": "MobileNetV2 ImageNet alpha=1.0",
+        "framework": "TensorFlow/Keras",
+        "input_file": "data\\downloads\\cats.png",
+        "predictions": [
+          {
+            "class_id": "n02123045",
+            "label": "tabby",
+            "score": 0.588078
+          },
+          {
+            "class_id": "n02123159",
+            "label": "tiger_cat",
+            "score": 0.332186
+          },
+          {
+            "class_id": "n02124075",
+            "label": "Egyptian_cat",
+            "score": 0.045367
+          },
+          {
+            "class_id": "n02490219",
+            "label": "marmoset",
+            "score": 0.002178
+          },
+          {
+            "class_id": "n02127052",
+            "label": "lynx",
+            "score": 0.001641
+          }
+        ],
+        "load_seconds": 0.0,
+        "inference_seconds": 0.135,
+        "wall_seconds": 0.153,
+        "sampled_peak_process_rss_mb": 1133.26,
+        "id": "cats",
+        "acceptable_class_ids": [
+          "n02123045",
+          "n02123159",
+          "n02124075"
+        ],
+        "top1_demo_match": true,
+        "top5_demo_match": true
+      }
+    ],
+    "local_llm": [
+      {
+        "task": "local_llm",
+        "model": "Qwen2.5-3B-Instruct Q4_K_M",
+        "runtime": "llama.cpp b11510 CPU",
+        "prompt": "What is 17 plus 25? Answer with only the integer.",
+        "answer": "42",
+        "inference_location": "local computer; no provider API",
+        "max_new_tokens": 160,
+        "generated_eval_runs": 2,
+        "generation_tokens_per_second": 15.49,
+        "wall_seconds": 4.2764,
+        "sampled_peak_process_rss_mb": 4467.97,
+        "id": "arithmetic",
+        "expected_exact": "42",
+        "exact_match": true
+      },
+      {
+        "task": "local_llm",
+        "model": "Qwen2.5-3B-Instruct Q4_K_M",
+        "runtime": "llama.cpp b11510 CPU",
+        "prompt": "What is the capital of France? Answer with only the city name.",
+        "answer": "Paris",
+        "inference_location": "local computer; no provider API",
+        "max_new_tokens": 160,
+        "generated_eval_runs": 1,
+        "generation_tokens_per_second": 14.43,
+        "wall_seconds": 4.0623,
+        "sampled_peak_process_rss_mb": 4466.78,
+        "id": "geography",
+        "expected_exact": "Paris",
+        "exact_match": true
+      },
+      {
+        "task": "local_llm",
+        "model": "Qwen2.5-3B-Instruct Q4_K_M",
+        "runtime": "llama.cpp b11510 CPU",
+        "prompt": "Explain the difference between image classification and object detection in two short sentences.",
+        "answer": "Image classification involves identifying a single class or category for the entire image, while object detection identifies individual objects within an image and provides their bounding boxes.",
+        "inference_location": "local computer; no provider API",
+        "max_new_tokens": 160,
+        "generated_eval_runs": 29,
+        "generation_tokens_per_second": 14.23,
+        "wall_seconds": 5.9327,
+        "sampled_peak_process_rss_mb": 4467.08,
+        "id": "explanation",
+        "expected_exact": null
+      }
+    ],
+    "video_object_detection": {
+      "task": "video_object_detection",
+      "model": "SSDLite320 MobileNetV3 Large COCO_V1",
+      "framework": "PyTorch/TorchVision",
+      "input_file": "data\\downloads\\vtest.avi",
+      "output_video": "results\\generated\\detected_video.mp4",
+      "source_fps": 10.0,
+      "decoded_frames": 90,
+      "inferred_frames": 30,
+      "stride": 3,
+      "score_threshold": 0.25,
+      "detection_counts_across_frames": {
+        "person": 83
+      },
+      "load_seconds": 0.1897,
+      "inference_seconds": 2.9567,
+      "inference_fps": 10.1464,
+      "processing_fps": 26.107,
+      "frames": [
+        {
+          "frame": 0,
+          "timestamp_seconds": 0.0,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.287549,
+              "box_xyxy": [
+                647.81,
+                241.48,
+                677.65,
+                326.25
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.275007,
+              "box_xyxy": [
+                499.15,
+                169.9,
+                524.34,
+                219.67
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 3,
+          "timestamp_seconds": 0.3,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.324365,
+              "box_xyxy": [
+                276.58,
+                214.5,
+                305.67,
+                296.62
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.272937,
+              "box_xyxy": [
+                494.58,
+                174.13,
+                521.81,
+                238.9
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.265199,
+              "box_xyxy": [
+                619.68,
+                246.18,
+                651.89,
+                320.63
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 6,
+          "timestamp_seconds": 0.6,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.377625,
+              "box_xyxy": [
+                588.78,
+                238.09,
+                621.64,
+                321.65
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.276302,
+              "box_xyxy": [
+                485.7,
+                167.12,
+                515.38,
+                240.45
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.269314,
+              "box_xyxy": [
+                599.92,
+                242.61,
+                627.76,
+                326.38
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.257317,
+              "box_xyxy": [
+                284.73,
+                217.28,
+                321.58,
+                297.57
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 9,
+          "timestamp_seconds": 0.9,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.303658,
+              "box_xyxy": [
+                474.34,
+                173.54,
+                505.86,
+                247.63
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.29869,
+              "box_xyxy": [
+                564.93,
+                238.73,
+                603.23,
+                328.02
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 12,
+          "timestamp_seconds": 1.2,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.295001,
+              "box_xyxy": [
+                532.06,
+                237.77,
+                565.35,
+                321.64
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.286895,
+              "box_xyxy": [
+                326.87,
+                210.75,
+                360.77,
+                294.18
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.263405,
+              "box_xyxy": [
+                455.64,
+                176.44,
+                484.52,
+                248.44
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 15,
+          "timestamp_seconds": 1.5,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.286442,
+              "box_xyxy": [
+                498.53,
+                241.63,
+                523.84,
+                315.82
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.275745,
+              "box_xyxy": [
+                714.6,
+                287.81,
+                757.61,
+                393.5
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.254607,
+              "box_xyxy": [
+                343.14,
+                207.49,
+                372.29,
+                284.07
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 18,
+          "timestamp_seconds": 1.8,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.413953,
+              "box_xyxy": [
+                707.89,
+                286.81,
+                748.64,
+                388.47
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.302367,
+              "box_xyxy": [
+                722.71,
+                281.38,
+                759.16,
+                385.61
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.288229,
+              "box_xyxy": [
+                461.86,
+                242.89,
+                489.42,
+                317.2
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 21,
+          "timestamp_seconds": 2.1,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.306091,
+              "box_xyxy": [
+                694.18,
+                272.04,
+                737.38,
+                375.34
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 24,
+          "timestamp_seconds": 2.4,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.378883,
+              "box_xyxy": [
+                675.02,
+                261.41,
+                711.7,
+                362.71
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.26097,
+              "box_xyxy": [
+                415.05,
+                191.44,
+                445.22,
+                297.61
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.254869,
+              "box_xyxy": [
+                387.06,
+                183.37,
+                418.81,
+                291.37
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 27,
+          "timestamp_seconds": 2.7,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.414773,
+              "box_xyxy": [
+                384.17,
+                175.21,
+                421.58,
+                300.3
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.401327,
+              "box_xyxy": [
+                671.96,
+                259.81,
+                707.8,
+                357.87
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.287571,
+              "box_xyxy": [
+                648.4,
+                264.37,
+                674.4,
+                354.46
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 30,
+          "timestamp_seconds": 3.0,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.516987,
+              "box_xyxy": [
+                637.96,
+                258.79,
+                673.18,
+                347.55
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.380469,
+              "box_xyxy": [
+                384.33,
+                182.49,
+                419.41,
+                292.79
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.333237,
+              "box_xyxy": [
+                656.09,
+                254.7,
+                688.29,
+                344.27
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 33,
+          "timestamp_seconds": 3.3,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.520882,
+              "box_xyxy": [
+                630.43,
+                248.56,
+                669.69,
+                342.51
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.252316,
+              "box_xyxy": [
+                387.97,
+                187.35,
+                420.81,
+                281.55
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 36,
+          "timestamp_seconds": 3.6,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.368631,
+              "box_xyxy": [
+                611.84,
+                242.03,
+                652.99,
+                334.14
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.287189,
+              "box_xyxy": [
+                603.2,
+                246.03,
+                635.65,
+                333.13
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 39,
+          "timestamp_seconds": 3.9,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.414762,
+              "box_xyxy": [
+                581.97,
+                239.3,
+                618.31,
+                329.61
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.360607,
+              "box_xyxy": [
+                596.37,
+                235.93,
+                636.09,
+                327.5
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.252892,
+              "box_xyxy": [
+                386.79,
+                178.17,
+                423.56,
+                268.47
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 42,
+          "timestamp_seconds": 4.2,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.423727,
+              "box_xyxy": [
+                568.73,
+                232.16,
+                606.56,
+                326.27
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.312429,
+              "box_xyxy": [
+                725.17,
+                285.88,
+                756.95,
+                392.74
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 45,
+          "timestamp_seconds": 4.5,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.306074,
+              "box_xyxy": [
+                703.39,
+                280.71,
+                755.18,
+                388.39
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.267442,
+              "box_xyxy": [
+                384.8,
+                174.42,
+                420.7,
+                264.59
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.256803,
+              "box_xyxy": [
+                543.16,
+                235.3,
+                574.42,
+                317.52
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.253927,
+              "box_xyxy": [
+                574.56,
+                230.33,
+                606.59,
+                315.78
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.251974,
+              "box_xyxy": [
+                443.26,
+                179.16,
+                468.33,
+                255.86
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.250844,
+              "box_xyxy": [
+                559.33,
+                227.25,
+                589.66,
+                320.9
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 48,
+          "timestamp_seconds": 4.8,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.300097,
+              "box_xyxy": [
+                521.45,
+                224.65,
+                552.27,
+                312.26
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.285596,
+              "box_xyxy": [
+                693.9,
+                258.34,
+                719.66,
+                376.13
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.272395,
+              "box_xyxy": [
+                560.98,
+                219.63,
+                587.33,
+                310.95
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.253293,
+              "box_xyxy": [
+                403.29,
+                179.21,
+                428.44,
+                252.19
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.251374,
+              "box_xyxy": [
+                434.54,
+                177.35,
+                459.51,
+                252.33
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 51,
+          "timestamp_seconds": 5.1,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.582859,
+              "box_xyxy": [
+                673.06,
+                259.81,
+                704.81,
+                364.45
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.30116,
+              "box_xyxy": [
+                541.75,
+                215.86,
+                573.68,
+                296.09
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.295132,
+              "box_xyxy": [
+                501.94,
+                219.3,
+                534.09,
+                293.84
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 54,
+          "timestamp_seconds": 5.4,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.346677,
+              "box_xyxy": [
+                648.54,
+                264.83,
+                678.62,
+                354.25
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.310234,
+              "box_xyxy": [
+                492.21,
+                227.02,
+                522.41,
+                300.76
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 57,
+          "timestamp_seconds": 5.7,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.469913,
+              "box_xyxy": [
+                636.06,
+                247.08,
+                666.09,
+                345.78
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.345721,
+              "box_xyxy": [
+                381.66,
+                174.28,
+                418.47,
+                266.96
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.337942,
+              "box_xyxy": [
+                499.67,
+                213.91,
+                532.55,
+                289.74
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.260987,
+              "box_xyxy": [
+                509.78,
+                210.36,
+                541.32,
+                297.49
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 60,
+          "timestamp_seconds": 6.0,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.383621,
+              "box_xyxy": [
+                617.97,
+                241.54,
+                650.93,
+                334.15
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.295424,
+              "box_xyxy": [
+                494.36,
+                216.3,
+                522.14,
+                283.71
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.283397,
+              "box_xyxy": [
+                477.63,
+                216.32,
+                509.37,
+                288.29
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.257312,
+              "box_xyxy": [
+                498.5,
+                203.23,
+                534.73,
+                292.89
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 63,
+          "timestamp_seconds": 6.3,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.328519,
+              "box_xyxy": [
+                610.54,
+                234.04,
+                641.21,
+                330.51
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.295108,
+              "box_xyxy": [
+                487.95,
+                207.47,
+                515.59,
+                288.45
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.287365,
+              "box_xyxy": [
+                477.01,
+                217.2,
+                505.91,
+                284.92
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 66,
+          "timestamp_seconds": 6.6,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.397281,
+              "box_xyxy": [
+                604.49,
+                221.04,
+                633.5,
+                318.96
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.255973,
+              "box_xyxy": [
+                479.74,
+                198.79,
+                507.66,
+                276.63
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 69,
+          "timestamp_seconds": 6.9,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.397711,
+              "box_xyxy": [
+                587.76,
+                200.36,
+                623.35,
+                311.5
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.253685,
+              "box_xyxy": [
+                458.92,
+                182.62,
+                501.75,
+                284.44
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 72,
+          "timestamp_seconds": 7.2,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.411589,
+              "box_xyxy": [
+                581.32,
+                204.76,
+                613.99,
+                300.97
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.269037,
+              "box_xyxy": [
+                456.26,
+                176.82,
+                497.92,
+                273.85
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.256828,
+              "box_xyxy": [
+                386.53,
+                176.78,
+                423.43,
+                270.77
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.254406,
+              "box_xyxy": [
+                276.56,
+                161.44,
+                303.15,
+                233.14
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 75,
+          "timestamp_seconds": 7.5,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.391786,
+              "box_xyxy": [
+                573.66,
+                207.37,
+                604.76,
+                296.18
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.278671,
+              "box_xyxy": [
+                385.42,
+                177.18,
+                425.6,
+                266.71
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 78,
+          "timestamp_seconds": 7.8,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.282127,
+              "box_xyxy": [
+                386.38,
+                179.16,
+                424.66,
+                265.67
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.26745,
+              "box_xyxy": [
+                570.99,
+                201.41,
+                601.33,
+                287.27
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.259325,
+              "box_xyxy": [
+                472.95,
+                182.52,
+                497.87,
+                253.98
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 81,
+          "timestamp_seconds": 8.1,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.299973,
+              "box_xyxy": [
+                385.57,
+                178.04,
+                426.01,
+                269.55
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 84,
+          "timestamp_seconds": 8.4,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.298976,
+              "box_xyxy": [
+                466.4,
+                180.22,
+                493.15,
+                252.05
+              ]
+            }
+          ]
+        },
+        {
+          "frame": 87,
+          "timestamp_seconds": 8.7,
+          "detections": [
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.280016,
+              "box_xyxy": [
+                469.75,
+                178.15,
+                494.01,
+                244.05
+              ]
+            },
+            {
+              "label": "person",
+              "label_id": 1,
+              "score": 0.257375,
+              "box_xyxy": [
+                563.42,
+                168.76,
+                601.14,
+                270.84
+              ]
+            }
+          ]
+        }
+      ],
+      "wall_seconds": 3.6557,
+      "sampled_peak_process_rss_mb": 1178.27
+    }
+  }
+}
