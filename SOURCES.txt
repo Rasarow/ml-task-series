@@ -1,0 +1,13 @@
+Third-party model and example sources
+
+This project contains integration code around existing pretrained weights. Model authors retain their respective rights. Large model weights and downloaded media are excluded from Git through .gitignore.
+
+Component; Source; Upstream license information
+T5 Small; https://huggingface.co/google-t5/t5-small; Apache 2.0 according to the model card
+Whisper Tiny English; https://huggingface.co/openai/whisper-tiny.en; Apache 2.0 according to the model card; OpenAI Whisper repository uses MIT
+TensorFlow/Keras MobileNetV2; https://keras.io/api/applications/mobilenet/; Follow TensorFlow/Keras and upstream weight terms
+TorchVision SSDLite; https://docs.pytorch.org/vision/0.23/models/generated/torchvision.models.detection.ssdlite320_mobilenet_v3_large.html; Follow TorchVision and upstream weight/data terms
+Qwen2.5 3B Instruct GGUF; https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF; Qwen Research license; do not label this checkpoint Apache 2.0
+llama.cpp b11510; https://github.com/ggml-org/llama.cpp/releases/tag/b11510; MIT; runtime archive contains upstream distribution files
+
+The dog photo comes from the PyTorch Hub example, the cats photo from Hugging Face documentation images, and the example video from OpenCV 4.12.0 sample data. Their download URLs and SHA256 checksums are in data/download_manifest.json. Repository licensing does not automatically determine every media asset's underlying rights. The source repository should contain downloader instructions and source references rather than republish these sample media. Original input articles and reference summaries were created for this project. Two demonstration WAV files were synthesized locally using Windows Microsoft David Desktop; they are not human-recorded evaluation samples.

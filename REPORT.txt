@@ -1,0 +1,77 @@
+Local pretrained model applications
+
+Purpose
+
+The project implements four applications for different content types and one additional language model running locally. The applications are English text summarization, English speech recognition, image classification and video object detection. The language model answers text prompts. Existing weights are reused, without training or fine-tuning. The implementation keeps inference functions separate from the command interface so that an application can later be exposed through an API.
+
+Library selection
+
+PyTorch performs inference for text, audio and video. TorchVision provides the video detector and its preprocessing. Transformers loads T5 and Whisper through a common interface. TensorFlow with Keras performs image classification, providing actual use of a second framework. A standalone llama.cpp executable runs the quantized language model on the CPU. These components cover several data types without requiring a GPU or a remote inference service.
+
+OpenCV reads and writes video frames. Pillow converts images. SoundFile reads WAV or FLAC audio, and SciPy performs sample-rate conversion. ROUGE and word-error metrics evaluate generated text and transcripts. psutil samples resident memory for the Python process and its child processes. Framework versions and model revisions are recorded with the results and configuration.
+
+Text summarization
+
+The input is a nonempty English article. T5 Small generates an abstractive summary through PyTorch and Transformers. The model receives a summarization task prefix. Its encoder represents the article and its decoder generates the shorter text. The input is limited to 512 model tokens; oversized text is rejected rather than silently truncated. Empty input and invalid generation lengths are rejected before loading the model.
+
+T5 Small was selected because it is a compact existing model suitable for a CPU demonstration. Its weights are loaded from a fixed revision. Three article and reference-summary pairs provide the local evaluation. ROUGE-1, ROUGE-2 and ROUGE-L F1 compare generated and reference wording. Generation time and the word-compression ratio describe efficiency. Word overlap does not guarantee factual accuracy, and a good summary can use different wording from the reference.
+
+Speech recognition
+
+The input is an English WAV or FLAC recording. Whisper Tiny English converts it to text with PyTorch. Audio is converted to mono and resampled to 16 kHz. Input longer than 30 seconds is explicitly divided into chunks. Each chunk produces a transcript and the strings are joined. This makes long-input behavior visible, although words at chunk boundaries can be lost.
+
+The tiny English model keeps CPU cost manageable. The two test utterances were synthesized with an English Windows voice and have known references. They are not human recordings and do not establish accuracy across accents, background noise or microphone conditions. Normalized WER and CER compare words and characters after case and punctuation normalization. WER is calculated across all reference words, rather than averaging utterance percentages. Real-time factor is total recognition time divided by audio duration. A value below one means the measured recognition stage was faster than playback duration on this machine.
+
+Image classification
+
+TensorFlow and Keras run MobileNetV2 with its ImageNet classification head. The image is oriented correctly, converted to RGB, resized to 224 by 224 pixels and normalized with the model's preprocessing function. The output is a ranked list of ImageNet class IDs, labels and class scores. The application accepts a requested top-k value.
+
+MobileNetV2 provides a compact pretrained second-framework example. The demonstration contains a dog photograph and a photograph containing cats. Several acceptable cat subclass IDs are declared in the sample definition. Top-1 and top-5 matches on these two photographs are reported as demonstration checks. They are not official ImageNet validation accuracy. A class score is an individual prediction score, not a measured overall success rate. A larger independently labeled test set would be needed for general accuracy and per-class error analysis.
+
+Video object detection
+
+OpenCV decodes the video and TorchVision runs SSDLite320 with a MobileNetV3 Large backbone and pretrained COCO weights. Selected frames are preprocessed, passed through the detector and filtered by a score threshold. Boxes, labels and scores are written into the processed frames of an MP4 output. The input file cannot also be the output file.
+
+The demonstration processes the first 90 source frames, performing inference every third frame with a threshold of 0.25. Unsampled frames are written without boxes; old detections are not copied onto later frames. Reducing the inference frequency lowers CPU work but can miss short-lived objects. Lowering the threshold exposes more uncertain detections and can increase false positives. The output video does not preserve audio. There is no object tracking, so detection counts across frames can include the same person repeatedly.
+
+The selected sample lacks ground-truth boxes. Consequently mAP, detection precision and recall are not reported. Measured inferred frames per second and overall processing frames per second describe different costs. Qualitative inspection can identify obvious misses but cannot replace an annotated detection benchmark.
+
+Local language model
+
+Qwen2.5 3B Instruct in Q4_K_M GGUF format runs with a pinned llama.cpp Windows CPU release. Quantization reduces weight storage and makes the model practical on the available CPU machine. Downloaded model and runtime archives are checked with SHA-256. Inference starts a local native process, passes the prompt in a temporary UTF-8 file and captures its answer and performance output. There is no provider API call.
+
+The prompt length and requested output length are bounded. Inputs containing conversation control tokens are rejected. A fixed seed and zero temperature make the sample runs reproducible under the selected configuration. The evaluation contains two exact-answer questions and one explanation prompt. Exact match applies only to the two questions with known exact references. The explanation is reviewed manually. A fluent answer can still be wrong, and a correct short example does not establish general reasoning accuracy.
+
+Evaluation and efficiency
+
+The measured run is stored in results/evaluation.json. It records Python and framework versions, model identifiers, reference texts, predictions, quality metrics, load and inference timings, and sampled resident memory. All five applications complete with Python network connections blocked and llama.cpp in offline mode. The sample set is small and selected for functional demonstration.
+
+Measured run: 2026-10-09T00:33:26.065079+00:00.
+Python: 3.12.14. Frameworks: torch 2.8.0+cpu, torchvision 0.23.0+cpu, tensorflow 2.20.0, transformers 4.57.1, keras 3.15.1.
+Summarization: ROUGE-1 F1 0.3941; ROUGE-2 F1 0.1234; ROUGE-L F1 0.2612.
+Speech recognition: normalized WER 0.0000; normalized CER 0.0000; aggregate real-time factor 0.1286.
+Image classification: top-1 matches 100%; top-5 matches 100%, on two declared examples.
+Video: 90 decoded frames and 30 inferred frames; 10.15 inference FPS; 26.11 processing FPS; 83 repeated person detections across frames.
+Language model: 100% exact match on 2 exact-answer questions. The third prompt is an explanation reviewed separately.
+
+Model loading and first-use warm-up influence timing. The memory measurement sums the process and native children and can include models loaded for earlier tasks. Sampling can miss short-lived peaks. It is not an isolated model-memory measurement or a throughput benchmark under concurrent traffic.
+
+Operation and limitations
+
+Preparation explicitly downloads models and media into the project. Inference uses local caches. Offline mode fails on a missing cache rather than silently downloading. Clear validation handles missing paths, empty text and invalid parameters. Version metadata that is unavailable is recorded as null; genuine model and data failures are still raised.
+
+Long documents need chunking or a model with a longer context. Audio needs more representative human examples. Image evaluation needs a larger labeled dataset. Video evaluation needs annotated boxes and tracking if unique-object counts are required. Language-model output needs task-specific factual checks. A later API would also need request-size limits, queueing, authentication and monitoring. Those services are outside the current application scope.
+
+Sources
+
+T5 Small model: https://huggingface.co/google-t5/t5-small
+T5 paper: https://arxiv.org/abs/1910.10683
+Whisper Tiny English model: https://huggingface.co/openai/whisper-tiny.en
+Whisper paper: https://arxiv.org/abs/2212.04356
+MobileNetV2 documentation: https://keras.io/api/applications/mobilenet/
+MobileNetV2 paper: https://arxiv.org/abs/1801.04381
+SSDLite model documentation: https://docs.pytorch.org/vision/0.23/models/generated/torchvision.models.detection.ssdlite320_mobilenet_v3_large.html
+Qwen model: https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF
+llama.cpp release: https://github.com/ggml-org/llama.cpp/releases/tag/b11510
+Sample download URLs and hashes: data/download_manifest.json
+Model and example licensing references: SOURCES.txt

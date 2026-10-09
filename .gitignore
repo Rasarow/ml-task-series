@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.idea/
+*.pyc
+*.log
+*.part
+.cache/
+models/
+runtime/
+data/downloads/
+results/generated/
